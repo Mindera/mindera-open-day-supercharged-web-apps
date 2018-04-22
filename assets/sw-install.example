@@ -1,0 +1,12 @@
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('our-cache-v1').then(cache => {
+      return cache.addAll([
+        '/',
+        'style.css',
+        'script.js',
+        'another-page.html'
+      ]);
+    })
+  );
+});

@@ -1,0 +1,9 @@
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.open('our-cache-v1').then(cache =>
+      caches.match(event.request).then(response => {
+        return response || fetch(event.request)
+      });
+    )
+  );
+});
